@@ -2,11 +2,8 @@ import TrackRepository from "./TrackRepository.js";
 import Track from "./Track.js";
 
 class TrackService {
-    /**
-     * @param {TrackRepository} trackRepository 
-     */
-    constructor(trackRepository) {
-        this.trackRepository = trackRepository;
+    constructor() {
+        this.trackRepository = new TrackRepository();
     }
 
     /**
