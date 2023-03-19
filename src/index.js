@@ -1,20 +1,20 @@
 import express from 'express';
-import Track from './domain/tracks/Track.js';
+import TrackRepository from './domain/tracks/TrackRepository.js';
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-    const song = Track.build({
-        artist: 'Normandie',
-        title: 'White Flag',
-        album: 'White Flag',
-        file: 'file.mp3',
-    });
-    
-    song.save();
+const trackRepository = new TrackRepository();
 
-    res.send('Track created');
+app.get('/', async (req, res) => {
+    // const song = trackRepository.create({
+    //     artist: 'Normandie',
+    //     title: 'White Flag',
+    //     album: 'White Flag',
+    //     file: 'file.mp3',
+    // });
+
+    res.send(await trackRepository.find(6));
 })
 
 app.listen(port, () => {
