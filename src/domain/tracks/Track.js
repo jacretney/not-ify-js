@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from '../../infrastructure/database/db.js';
 
-
 const Track = db.define('Track', {
     id: {
         type: DataTypes.BIGINT,
