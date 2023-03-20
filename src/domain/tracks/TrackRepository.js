@@ -7,8 +7,6 @@ class TrackRepository {
      * @returns {Track}
      */
     async create(data) {
-        console.log(data);
-        
         return await Track.create(data);
     }
 

@@ -6,11 +6,7 @@ import Track from '../../../../src/domain/tracks/Track';
 
 describe('A TrackController', () => {
     beforeAll(async () => {
-        await db.authenticate();
-    })
-
-    afterAll(() => {
-        return db.close();
+        await db.sync({ force: true })
     })
 
     it('can get a track by ID', async () => {

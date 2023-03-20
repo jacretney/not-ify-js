@@ -8,8 +8,6 @@ const find = async (req, res) => {
 }
 
 const create = async (req, res) => {
-    console.log(req.body);
-    
     res.send(await trackService.create(new CreateTrackData({
         artist: req.body.artist,
         title: req.body.title,
