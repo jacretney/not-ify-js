@@ -1,12 +1,10 @@
-require('iconv-lite').encodingExists('foo')
-
 import request from 'supertest';
+import app from '../../../../src/app';
+
 import db from '../../../../src/infrastructure/database/db';
 import Track from '../../../../src/domain/tracks/Track';
 
 describe('A TrackController', () => {
-    const baseURL = 'http://localhost:3000';
-
     beforeAll(async () => {
         await db.authenticate();
     })
@@ -23,7 +21,7 @@ describe('A TrackController', () => {
             file: 'file.mp3',
         });
 
-        const response = await request(baseURL).get(`/tracks/${track.id}`);
+        const response = await request(app).get(`/tracks/${track.id}`);
 
         expect(response.statusCode).toEqual(200);
         expect(response.body.id).toEqual(track.id);
@@ -33,7 +31,7 @@ describe('A TrackController', () => {
     });
 
     it('can create a track', async () => {
-        const response = await request(baseURL)
+        const response = await request(app)
             .put('/track')
             .set('Accept', 'application/json')
             .send({
